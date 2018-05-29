@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Recipe } from '../recipe.module';
 import {RecipeService} from '../recipe.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-recipe-list',
@@ -8,11 +9,19 @@ import {RecipeService} from '../recipe.service';
   styleUrls: ['./recipe-list.component.css']
 })
 export class RecipeListComponent implements OnInit {
-  recipes: Recipe[] = [];
+  recipes;
 
-  constructor(private recipeService: RecipeService) { }
+  constructor(private recipeService: RecipeService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.recipes = this.recipeService.getRecipes();
+    this.loadRecipes();
+  }
+
+  loadRecipes() {
+    return this.recipeService.getRecipes()
+      .subscribe( data => {
+        this.recipes = data;
+        console.log("RODOU");
+      }, err => console.log(err));
   }
 }

@@ -1,25 +1,37 @@
 import {Ingredient} from '../shared/ingredient.module';
-import {EventEmitter} from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 
+@Injectable()
 export class ShoppingListService {
-  ingredientsChanged = new EventEmitter<Ingredient[]>();
 
-  ingredients: Ingredient[] = [
-    new Ingredient("Egg", 12),
-    new Ingredient("Bacon", 23)
-  ];
+  constructor(private http: HttpClient ) {}
 
-  addIngredient(name: string, amount: number) {
-    this.ingredients.push(new Ingredient(name, amount));
-    this.ingredientsChanged.emit(this.ingredients.slice());
+  private API = 'http://localhost:8080';
+  ingredientsChanged: EventEmitter = new EventEmitter();
+
+  addIngredient(name: string, amount: number, visible: boolean) {
+    const url = this.API + '/ingredients';
+    return this.http.post(url, new Ingredient(name, amount, visible));
   }
 
-  addIngredients(ingredients: Ingredient[]) {
-    this.ingredients.push(...ingredients);
-    this.ingredientsChanged.emit(this.ingredients.slice());
+  getIngredients() {
+    const url = this.API + '/ingredients';
+    return this.http.get(url);
   }
 
-  getIngredients(){
-    return this.ingredients.slice();
+  updateIngredient(ingredient) {
+    const url = this.API + '/ingredients/' + ingredient.id;
+    ingredient.recipe = null;
+    return this.http.put(url, ingredient);
+  }
+
+  deleteIngredient(ingredient) {
+    const url = this.API + '/ingredients/' + ingredient.id;
+    if(ingredient.recipe===null) return this.http.delete(url);
+    else{
+      ingredient.visible = false;
+      return this.updateIngredient(ingredient);
+    }
   }
 }

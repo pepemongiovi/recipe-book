@@ -8,8 +8,11 @@ import {Injectable} from '@angular/core';
 export class RecipeResolver implements Resolve<Recipe> {
   constructor(private recipeService: RecipeService) {}
 
-  resolve( route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Recipe> |
-    Promise<Recipe> | Recipe {
-    return this.recipeService.getRecipe(route.params['id']);
+  resolve( route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> |
+    Promise<any> | any {
+    return this.recipeService.getRecipe(route.params['id']).toPromise()
+      .then( (data: Recipe) => {
+        return data;
+      }, err => console.log(err));
   }
 }

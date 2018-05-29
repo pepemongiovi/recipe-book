@@ -7,15 +7,29 @@ import {ShoppingListService} from '../shopping-list.service';
   styleUrls: ['./shopping-edit.component.css']
 })
 export class ShoppingEditComponent implements OnInit {
-  ingredientName: string;
-  ingredientAmount: number;
+  ingredientName = '';
+  ingredientAmount = 0;
 
   constructor(private shoppingListService: ShoppingListService) { }
 
   ngOnInit() {
   }
 
-  onAddIngredient(){
-    this.shoppingListService.addIngredient(this.ingredientName, this.ingredientAmount);
+  onAddIngredient() {
+    this.shoppingListService.addIngredient(this.ingredientName, this.ingredientAmount, true)
+      .subscribe(() => this.shoppingListService.ingredientsChanged.emit());
+  }
+
+  clearInputs() {
+    this.ingredientAmount = 0;
+    this.ingredientName = '';
+  }
+
+  addButtonDisabled() {
+    return this.ingredientName === '' || this.ingredientAmount <= 0;
+  }
+
+  clearButtonDisabled() {
+    return this.ingredientName === '' && this.ingredientAmount === 0;
   }
 }

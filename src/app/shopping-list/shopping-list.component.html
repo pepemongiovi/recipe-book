@@ -4,10 +4,12 @@
     <hr>
     <h2>Shopping List</h2>
     <ul class="list-group">
-        <a class="list-group-item"
-           style="cursor: pointer"
+        <a class="list-group-item" style="cursor: pointer"
            *ngFor="let ingredient of ingredients">
           {{ingredient.name}} ({{ingredient.amount}})
+          <span class="pull-right" (click)="deleteIngredient(ingredient)">
+            <mat-icon>delete</mat-icon>
+          </span>
         </a>
     </ul>
   </div>
