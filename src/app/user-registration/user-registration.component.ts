@@ -51,7 +51,7 @@ export class UserRegistrationComponent implements OnInit {
       this.form.value.password
     );
 
-    this._userService.signUp(user)
+    this._userService.createUser(user)
       .subscribe(
         data => {
           this.resetForm();

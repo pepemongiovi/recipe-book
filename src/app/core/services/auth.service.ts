@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment} from '../../../environments/environment';
-import { Router } from '@angular/router';
+import {RouterService} from './router.service';
 
 @Injectable()
 export class AuthService {
 
-  private apiUserUrl: string;
+  private API: string;
   private TOKEN = 'token';
 
-  constructor(private _http: HttpClient, private _router: Router) {
-    this.apiUserUrl = `${environment.apiUrl}/login`;
+  constructor(private _http: HttpClient,
+              private routerService: RouterService) {
+    this.API = `${environment.apiUrl}/login`;
   }
 
   login(email, password) {
@@ -18,7 +19,7 @@ export class AuthService {
       email: email,
       password: password
     };
-    return this._http.post(this.apiUserUrl, body);
+    return this._http.post(this.API, body);
   }
 
   setSession(authData: any) {
@@ -41,7 +42,7 @@ export class AuthService {
 
   logout() {
     this.revokeSession();
-    this._router.navigateByUrl('login');
+    this.routerService.goToLogin();
   }
 
 }

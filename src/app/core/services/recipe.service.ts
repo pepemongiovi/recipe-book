@@ -3,27 +3,30 @@ import {HttpClient} from '@angular/common/http';
 import {Recipe} from '../models/recipe.model';
 import {ShoppingListService} from './shopping-list.service';
 import {RouterService} from './router.service';
+import {environment} from '../../../environments/environment';
 
 @Injectable()
 export class RecipeService {
-  private API = 'http://localhost:8080';
+  private API;
 
   constructor(private http: HttpClient,
               private shoppingListService: ShoppingListService,
-              private routerService: RouterService) {}
+              private routerService: RouterService) {
+    this.API = `${environment.apiUrl}/recipes`;
+  }
 
   getRecipes() {
-    const url = this.API + '/recipes';
+    const url = this.API;
     return this.http.get(url);
   }
 
   getRecipe(id) {
-    const url = this.API + '/recipes/' + id;
+    const url = this.API + '/' + id;
     return this.http.get(url);
   }
 
   createRecipe(recipe: Recipe) {
-    const url = this.API + '/recipes';
+    const url = this.API;
     this.http.post(url, recipe).subscribe(
       (createdRecipe: Recipe) => {
         console.log(createdRecipe);
@@ -37,17 +40,17 @@ export class RecipeService {
   }
 
   deleteRecipe(id) {
-    const url = this.API + '/recipes/' + id;
+    const url = this.API + '/' + id;
     return this.http.delete(url);
   }
 
   addIngredientsToShoppingList(recipe) {
-    const url = this.API + '/recipes/' + recipe.id + '/add-ingredients';
+    const url = this.API + '/' + recipe.id + '/add-ingredients';
     return this.http.put(url, recipe);
   }
 
   removeIngredientsFromShoppingList(recipe) {
-    const url = this.API + '/recipes/' + recipe.id + '/remove-ingredients';
+    const url = this.API + '/' + recipe.id + '/remove-ingredients';
     return this.http.put(url, recipe);
   }
 }
