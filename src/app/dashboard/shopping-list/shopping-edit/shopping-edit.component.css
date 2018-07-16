@@ -1,0 +1,20 @@
+.ingredient-registration {
+  display: inline;
+}
+
+.button:hover{
+  color: #6c8593;
+  font-weight: bold;
+  box-shadow: 4px 4px 4px darkgray !important;
+}
+
+.submit {
+  background-color: #78909C;
+  color: white;
+  width: 255px;
+}
+
+h2 {
+  margin-bottom: 15px;
+}
+

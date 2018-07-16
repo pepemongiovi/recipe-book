@@ -1,0 +1,65 @@
+.container{
+  alignment: center;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  border: 2px solid;
+  border-radius: 5px;
+  padding-bottom: 1%;
+}
+
+.submit{
+  alignment: center;
+  text-align: center;
+}
+
+.example-container {
+  display: flex;
+  height: 90vh;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 32%;
+}
+
+.register{
+  background-color: darkslategray;
+  color: white;
+  height: 38px;
+}
+
+.submit {
+  background-color: #78909C;
+  margin-bottom: 7px;
+  color: white;
+}
+
+mat-card {
+  text-align: center;
+  background-image: url('../../assets/images/wallpaper.jpg');
+}
+
+
+mat-checkbox, mat-form-field, p {
+  color: #020202;
+}
+
+p {
+  font-size: 20px;
+}
+
+p:hover {
+  color: darkslategray;
+}
+
+#box-login {
+  margin-top: 5%;
+}
+
+h1 {
+  color: black;
+  font-size: 40px;
+  margin-bottom: 2%;
+}

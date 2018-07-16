@@ -1,0 +1,116 @@
+.table-container {
+  margin-top: 5%;
+  margin-left: 12%;
+  margin-right: 10%;
+  width: 80%;
+}
+
+.container {
+  border: 3px solid;
+  width: 400px;
+}
+
+.container-form {
+  margin-top: 10%;
+}
+
+.spacer {
+  margin: 5px 0px;
+}
+
+.btn-submit {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.invalid-feedback {
+  display: block;
+}
+
+.registration-container {
+  display: flex;
+  min-height: 45vh;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+
+.registration-container > * {
+  width: 30%;
+}
+
+.mat-raised-button{
+  margin: 3px;
+}
+
+.return{
+  background-color: #910280;
+  color: white;
+}
+
+.send {
+  background-color: #78909C;
+  color: white;
+  width: 30%;
+}
+
+.external-container {
+  margin-top: 2%;
+}
+
+.delete-icon:hover {
+  color: red;
+}
+
+.add-icon {
+  color: darkgreen;
+}
+
+.add-icon:hover {
+  color: green;
+}
+
+h2 {
+  font-size: 35px;
+}
+
+mat-card-header {
+  text-align: left;
+}
+
+mat-card {
+  text-align: center;
+  min-height: 100%;
+  background-color: whitesmoke;
+}
+
+mat-icon {
+  margin: 10px;
+}
+
+mat-list-item {
+  max-height: 60px !important;
+  background-color: lightgrey;
+}
+
+mat-list-item:hover {
+  background-color: darkgrey;
+}
+
+.pathitem{
+  margin-bottom: 6px;
+  border: silver thin solid;
+  margin-top: 2px;
+}
+
+.pathitem:hover {
+  font-weight: bold;
+  box-shadow: 4px 4px 4px darkgray !important;
+}
+
+.button:hover{
+  color: #6c8593;
+  font-weight: bold;
+  box-shadow: 4px 4px 4px darkgray !important;
+}

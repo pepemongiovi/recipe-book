@@ -1,0 +1,41 @@
+.table-container {
+  margin-top: 2%;
+  margin-left: 6%;
+  margin-right: 10%;
+}
+
+mat-icon {
+  margin: 10px;
+}
+
+mat-icon:hover {
+  color: red;
+}
+
+mat-list-item {
+  max-height: 60px !important;
+}
+
+h2 {
+  font-weight: bold;
+}
+
+.pathitem{
+  margin-bottom: 6px;
+  border: silver thin solid;
+  margin-top: 2px;
+  background-color: lightgrey;
+  width: 350px;
+}
+
+.pathitem:hover {
+  font-weight: bold;
+  box-shadow: 4px 4px 4px darkgray !important;
+  background-color: lightgrey;
+}
+
+.button:hover{
+  color: #6c8593;
+  font-weight: bold;
+  box-shadow: 4px 4px 4px darkgray !important;
+}

@@ -1,0 +1,15 @@
+<ng-container>
+  <app-header (menuPress)="sidenav.toggle()"></app-header>
+  <mat-sidenav-container fixedTopGap="10px"  hasBackdrop="true" fullscreen>
+    <mat-sidenav #sidenav mode="over">
+      <mat-nav-list>
+        <a mat-list-item (click)="goToRecipes()">Recipes</a>
+        <a mat-list-item (click)="goToShoppingList()">Shopping List</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</ng-container>
+

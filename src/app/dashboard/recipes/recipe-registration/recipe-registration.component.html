@@ -1,0 +1,52 @@
+<mat-card>
+  <div class="external-container">
+  <h2><strong>New Recipe</strong></h2>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="registration-container">
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" [formGroup]="form" id="name" placeholder="Name" placeholder="Name">
+        <mat-error
+          *ngIf="form.controls['name'].invalid && (form.controls['name'].dirty ||
+        form.controls['name'].touched)">{{ "Name is required" }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <input matInput formControlName="description" [formGroup]="form" id="description" placeholder="description" >
+        <mat-error
+          *ngIf="form.controls['description'].invalid && (form.controls['description'].dirty ||
+        form.controls['description'].touched)">{{ "Description is required" }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Image's url</mat-label>
+        <input matInput formControlName="imgPath" [formGroup]="form" id="imgPath" placeholder="imgPath" >
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-form-field style="width: 80%">
+          <mat-label>Ingredient's name</mat-label>
+          <input matInput formControlName="newIngredientName" [formGroup]="form" placeholder="Ingredient's name">
+        </mat-form-field>
+        <mat-form-field style="width: 17%">
+          <mat-label>Amount</mat-label>
+          <input matInput type="number" min="1" formControlName="newIngredientAmount" [formGroup]="form" placeholder="Amount">
+        </mat-form-field>
+        <mat-icon class="add-icon" type="submit" matSuffix (click)="addIngredient()" title="Add ingredient">add_circle</mat-icon>
+      </mat-form-field>
+
+      <h2 *ngIf="ingredients.length!==0">Ingredients</h2>
+      <h4 class="pull-left" *ngIf="ingredients.length===0" style="color: red">No ingredients added</h4>
+        <mat-list>
+          <mat-list-item class="pathitem" *ngFor="let ingredient of ingredients; let i = index">
+            <mat-icon class="delete-icon" (click)="deleteIngredient(i)">delete</mat-icon>
+            {{ingredient.name}} ({{ingredient.amount}})
+          </mat-list-item>
+        </mat-list>
+      </div>
+
+    <button mat-raised-button [disabled]="submitDisabled()" class="send" type="submit"><strong>CREATE</strong></button>
+    </form>
+    </div>
+  </mat-card>

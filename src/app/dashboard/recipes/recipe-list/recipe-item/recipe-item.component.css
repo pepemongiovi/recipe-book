@@ -1,0 +1,24 @@
+.deleteIcon {
+  margin-top: 12px;
+  margin-left: 15px;
+}
+
+.list-group-item.active {
+  background-color: darkslategray;
+}
+
+.list-group-item{
+  background-color: lightgrey;
+}
+
+.list-group-item:hover{
+  background-color: darkgrey;
+}
+
+mat-icon{
+  color: black;
+}
+
+mat-icon:hover{
+  color: red;
+}

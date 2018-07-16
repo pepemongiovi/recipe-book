@@ -1,0 +1,39 @@
+<div style="margin-left: 10%">
+  <div class="row">
+    <div class="col-xs-12">
+      <img *ngIf="recipe.imgPath"
+           [src]="recipe.imgPath"
+           [alt]="recipe.name"
+           class="img-responsive"
+           style="max-height: 200px">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>{{ recipe.name }}</h1>
+    </div>
+  </div>
+  <div class="row bottomMargin">
+    <div class="col-xs-12">
+      <b>Description:</b> {{ recipe.description }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <h3 *ngIf="recipe.ingredients.length!==0">
+        Ingredients
+        <mat-icon (click)="addToShoppingList()"
+                  class="add-icon"
+                  title="Add to shopping list">add_shopping_cart</mat-icon>
+        <mat-icon (click)="removeFromShoppingList()"
+                  class="remove-icon"
+                  title="Remove from shopping list">remove_shopping_cart</mat-icon>
+      </h3>
+      <mat-list>
+        <mat-list-item class="pathitem" *ngFor="let ingredient of recipe.ingredients; let i = index">
+          {{ingredient.name}} ({{ingredient.amount}})
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+</div>

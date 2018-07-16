@@ -1,0 +1,65 @@
+<!--<div class="row">-->
+  <!--<div class="col-xs-10">-->
+    <!--<h4><strong>New Ingredient</strong></h4>-->
+    <!--<form (ngSubmit)="onAddIngredient()" #f="ngForm">-->
+      <!--<div class="row">-->
+        <!--<div class="col-sm-5 form-group">-->
+          <!--<label for="name">Name</label>-->
+          <!--<input name="name"-->
+                 <!--type="text"-->
+                 <!--id="name"-->
+                 <!--class="form-control"-->
+                 <!--required-->
+                 <!--ngModel-->
+                 <!--#name="ngModel">-->
+          <!--<span class="errorMsg" *ngIf="!name.valid && name.touched">Enter a name</span>-->
+        <!--</div>-->
+        <!--<div class="col-sm-2 form-group">-->
+          <!--<label for="amount">Amount</label>-->
+          <!--<input name="amount"-->
+                 <!--type="number"-->
+                 <!--step="1"-->
+                 <!--min="1"-->
+                 <!--id="amount"-->
+                 <!--class="form-control"-->
+                 <!--#amount="ngModel"-->
+                 <!--required-->
+                 <!--ngModel>-->
+          <!--<span class="errorMsg" *ngIf="!amount.valid && amount.touched">Invalid amount</span>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="row">-->
+        <!--<div class="col-xs-12">-->
+          <!--<button class="btn btn-success"-->
+                  <!--type="submit"-->
+                  <!--[disabled]="!f.valid">Add</button>-->
+          <!--<button class="btn btn-primary" type="button"-->
+                  <!--(click)="f.reset()"-->
+                  <!--[disabled]="clearButtonDisabled()">Clear</button>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</form>-->
+  <!--</div>-->
+<!--</div>-->
+
+
+<h2>New Ingredient</h2>
+<form [formGroup]="form" (ngSubmit)="addIngredient()">
+  <div class="ingredient-registration">
+    <mat-form-field style="width: 200px">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" [formGroup]="form" placeholder="Ingredient's name">
+      <mat-error
+        *ngIf="form.controls['name'].invalid && (form.controls['name'].dirty ||
+    form.controls['name'].touched)">{{ "Name is required" }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field style="width: 50px">
+      <mat-label>Amount</mat-label>
+      <input matInput type="number" min="1" formControlName="amount" [formGroup]="form" placeholder="Amount">
+    </mat-form-field><br>
+
+    <button mat-raised-button [disabled]="form.invalid" class="submit" type="submit"><strong>Add</strong></button>
+  </div>
+</form>
+

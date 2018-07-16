@@ -1,0 +1,12 @@
+<div class="table-container">
+    <app-shopping-edit></app-shopping-edit>
+    <hr>
+    <h2 *ngIf="ingredients.length!==0">Ingredients</h2>
+    <h4 class="pull-left" *ngIf="ingredients.length===0" style="color: red">No ingredients added</h4>
+    <mat-list>
+      <mat-list-item class="pathitem" *ngFor="let ingredient of ingredients; let i = index">
+        <mat-icon (click)="deleteIngredient(ingredient)">delete</mat-icon>
+        {{ingredient.name}} ({{ingredient.amount}})
+      </mat-list-item>
+    </mat-list>
+</div>

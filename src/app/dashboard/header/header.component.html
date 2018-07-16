@@ -1,0 +1,15 @@
+<mat-toolbar>
+  <button mat-button class="menu-button" (click)="onMenuPress()"><mat-icon>menu</mat-icon></button>
+  <h1 class="header-title">RECIPE BOOK</h1>
+  <div class="header-content">
+    {{getHeaderTitle()}}
+  </div>
+  <div class="fill-space"></div>
+  <i class="material-icons exit" (click)="logout()">
+    exit_to_app
+  </i>
+</mat-toolbar>
+
+
+
+

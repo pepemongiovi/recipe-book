@@ -1,29 +1,23 @@
-import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
-import {RecipesComponent} from './recipes/recipes.component';
-import {ShoppingListComponent} from './shopping-list/shopping-list.component';
-import {RecipeDetailsComponent} from './recipes/recipe-details/recipe-details.component';
-import {RecipeStartComponent} from './recipes/recipe-start/recipe-start.component';
-import {RecipeResolver} from './recipes/recipe-resolver.service';
-import {RecipeEditComponent} from './recipes/recipe-edit/recipe-edit.component';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import {AuthGuard} from './core/_guards/auth.guard';
+import {LoginComponent} from './login/login.component';
+import {UserRegistrationComponent} from './user-registration/user-registration.component';
 
-const appRoutes: Routes = [
-  {path: '', redirectTo: '/recipes', pathMatch: 'full'},
-  {path: 'recipes', component: RecipesComponent, children: [
-      {path: '', component: RecipeStartComponent},
-      {path: 'new', component: RecipeEditComponent },
-      {path: ':id', component: RecipeDetailsComponent, resolve: {recipe: RecipeResolver}},
-      {path: ':id/edit', component: RecipeEditComponent, resolve: {recipe: RecipeResolver} }
-    ]},
-  {path: 'shopping-list', component: ShoppingListComponent}
+
+
+const routes: Routes = [
+  { path: '', loadChildren: './login/login.module#LoginModule' },
+  { path: 'login', loadChildren: './login/login.module#LoginModule' },
+  { path: 'register', loadChildren: './user-registration/user-registration.module#UserRegistrationModule'},
+  {
+    path: 'dashboard',
+    loadChildren: './dashboard/dashboard.module#DashboardModule'
+  }
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(appRoutes)
-  ],
-  exports: [RouterModule]
+  imports: [ RouterModule.forRoot(routes, {useHash: false})],
+  exports: [ RouterModule ]
 })
-export class AppRoutingModule {
-
-}
+export class AppRoutingModule { }

@@ -1,0 +1,47 @@
+.fill-space {
+    flex: 1 1 auto;
+}
+
+#close {
+    font-size: 20px;
+    color: #fff;
+}
+
+#close:hover {
+    cursor: pointer;
+}
+
+mat-toolbar {
+    height: 45px;
+    background-color: darkslategray;
+}
+
+.mat-icon {
+  color: white;
+}
+.header-title {
+    color: #ECEFF1;
+    font-weight: bolder;
+    font-size: 30px;
+}
+
+.header-content {
+    font-size: 25px;
+    color: #ECEFF1;
+    flex: 1 1 auto;
+    text-align: center;
+    margin-left: 6.5%;
+
+}
+
+.exit {
+    color: white!important;
+}
+
+i:hover {
+    cursor: pointer;
+}
+
+.menu-button {
+  margin-left: -16px;
+}
