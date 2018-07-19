@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
 
     this._authService.login(this.userForm.value.email, this.userForm.value.password)
     .subscribe(res => {
-      console.log("WOOOWW");
+      console.log(res);
       this._authService.setSession(res['data']);
       this.routerSerivce.goToRecipes();
       }, err => {

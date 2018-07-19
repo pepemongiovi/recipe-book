@@ -11,6 +11,10 @@ export class RouterService {
     this.router.navigate(['/dashboard/recipes'], extras);
   }
 
+  goToRecipe(id, extras = <any>{}) {
+    extras.fragment = 'Recipes';
+    this.router.navigate(['/dashboard/recipes/' + id], extras);
+  }
 
   goToRecipeRegistration(extras = <any>{}) {
     extras.fragment = 'Recipe Registration';

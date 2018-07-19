@@ -6,7 +6,8 @@
     <mat-list>
       <mat-list-item class="pathitem" *ngFor="let ingredient of ingredients; let i = index">
         <mat-icon (click)="deleteIngredient(ingredient)">delete</mat-icon>
-        {{ingredient.name}} ({{ingredient.amount}})
+        ({{ingredient.amount}}) {{ingredient.name}}
+        <h6 style="margin-left: 15px"> {{showRecipeInfo(ingredient)}}</h6>
       </mat-list-item>
     </mat-list>
 </div>

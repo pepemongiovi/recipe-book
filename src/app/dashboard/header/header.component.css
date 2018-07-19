@@ -20,22 +20,19 @@ mat-toolbar {
   color: white;
 }
 .header-title {
-    color: #ECEFF1;
-    font-weight: bolder;
-    font-size: 30px;
+  color: #ECEFF1;
+  font-weight: bolder;
+  font-size: 30px;
 }
 
 .header-content {
-    font-size: 25px;
-    color: #ECEFF1;
-    flex: 1 1 auto;
-    text-align: center;
-    margin-left: 6.5%;
-
+  font-size: 25px;
+  color: #ECEFF1;
+  flex: 1 1 auto;
 }
 
 .exit {
-    color: white!important;
+  color: white!important;
 }
 
 i:hover {

@@ -2,6 +2,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import {ActivatedRoute} from '@angular/router';
 import {RecipeService} from '../../../core/services/recipe.service';
+import {UserService} from '../../../core/services/user.service';
+import {Recipe} from '../../../core/models/recipe.model';
 
 @Component({
   selector: 'app-recipe-list',
@@ -11,7 +13,7 @@ import {RecipeService} from '../../../core/services/recipe.service';
 export class RecipeListComponent implements OnInit {
   recipes;
 
-  constructor(private recipeService: RecipeService, private route: ActivatedRoute) { }
+  constructor(private recipeService: RecipeService) { }
 
   ngOnInit() {
     this.loadRecipes();
@@ -19,9 +21,21 @@ export class RecipeListComponent implements OnInit {
 
   loadRecipes() {
     return this.recipeService.getRecipes()
-      .subscribe( data => {
+      .subscribe(data => {
         this.recipes = data;
-        console.log("RODOU");
+        this.getRecipesById();
       }, err => console.log(err));
+  }
+
+  getRecipesById() {
+    for (let i = 0; i<this.recipes.length; i++) {
+      if(typeof this.recipes[i] !== 'object') {
+        this.recipeService.getRecipe(this.recipes[i]).subscribe(
+          (recipe: Recipe) => {
+            this.recipes[i] = recipe;
+          }
+        );
+      }
+    }
   }
 }

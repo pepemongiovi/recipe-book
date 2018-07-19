@@ -4,6 +4,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {RouterService} from '../../../core/services/router.service';
 import {Recipe} from '../../../core/models/recipe.model';
 import {RecipeService} from '../../../core/services/recipe.service';
+import {UserService} from '../../../core/services/user.service';
+import {User} from '../../../core/models/user.model';
 
 @Component({
   selector: 'app-recipe-registration',
@@ -14,11 +16,25 @@ export class RecipeRegistrationComponent implements OnInit {
 
   constructor(private _formBuilder: FormBuilder,
               private routerService: RouterService,
-              private recipeService: RecipeService) {
+              private recipeService: RecipeService,
+              private userService: UserService) {
     this.createForm();
   }
 
-  ngOnInit() {}
+  loggedUser: User;
+
+  ngOnInit() {
+    this.fetchLoggedUser();
+  }
+
+  fetchLoggedUser() {
+    const userEmail = JSON.parse(localStorage.getItem('user')).email;
+    this.userService.getUserByEmail(userEmail).subscribe(
+      (user: User) => {
+        this.loggedUser = user;
+      }
+    );
+  }
 
   form: FormGroup;
   ingredients: Ingredient[] = [];
@@ -59,7 +75,7 @@ export class RecipeRegistrationComponent implements OnInit {
 
   onSubmit() {
     const fields = this.form.value;
-    const recipe = new Recipe(fields.name, fields.description, fields.imgPath, this.ingredients);
+    const recipe = new Recipe(fields.name, fields.description, fields.imgPath, this.ingredients, this.loggedUser);
     this.recipeService.createRecipe(recipe);
   }
 

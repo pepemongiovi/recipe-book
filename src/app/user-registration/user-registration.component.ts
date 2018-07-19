@@ -3,8 +3,8 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import {UserService} from '../core/services/user.service';
 import {PasswordValidation} from '../shared/password-validation';
-import User from '../core/models/user.model';
 import {RouterService} from '../core/services/router.service';
+import {User} from '../core/models/user.model';
 
 @Component({
   selector: 'app-user-registration',

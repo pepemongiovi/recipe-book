@@ -16,7 +16,8 @@ export class RecipeService {
   }
 
   getRecipes() {
-    const url = this.API;
+    const userEmail = JSON.parse(localStorage.getItem('user')).email;
+    const url = this.API + '/user/' + userEmail;
     return this.http.get(url);
   }
 
@@ -28,14 +29,7 @@ export class RecipeService {
   createRecipe(recipe: Recipe) {
     const url = this.API;
     this.http.post(url, recipe).subscribe(
-      (createdRecipe: Recipe) => {
-        console.log(createdRecipe);
-        recipe.ingredients.forEach((ingredient) => {
-          ingredient.recipe = createdRecipe;
-          this.shoppingListService.addIngredient(ingredient).subscribe();
-        })
-        this.routerService.goToRecipes();
-      }
+      () => { this.routerService.goToRecipes(); }
     );
   }
 
