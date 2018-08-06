@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080'
+  apiUrl: 'https://recipebook-daca.herokuapp.com'
+  // apiUrl: 'https://localhost:8080'
 };

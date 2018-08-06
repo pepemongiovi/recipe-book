@@ -25,8 +25,9 @@ export class RecipeItemComponent implements OnInit {
 
   onDelete() {
     this.recipeService.deleteRecipe(this.recipe.id)
-      .subscribe(() => {
+      .subscribe((res) => {
+        console.log(res);
         this.routerService.goToRecipes();
-      });
+      }, (err) => {console.log(err);});
   }
 }

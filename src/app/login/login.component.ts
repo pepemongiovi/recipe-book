@@ -12,7 +12,6 @@ export class LoginComponent implements OnInit {
 
   userForm: FormGroup;
   emailRegex = /^[\w\W]{1,}@[\w\W]{2,}$/;
-  public _siteKey = '6LdYnVQUAAAAADXbOr4O-EzbldJe1HgKYQYIysDt';
 
   constructor(private _formBuilder: FormBuilder,
               private _authService: AuthService,
@@ -37,7 +36,6 @@ export class LoginComponent implements OnInit {
     if (this.userForm.value.remember) {
       this.setLocalStorage(this.userForm.value.email);
     }
-
     this._authService.login(this.userForm.value.email, this.userForm.value.password)
     .subscribe(res => {
       console.log(res);

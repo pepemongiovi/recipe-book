@@ -50,7 +50,6 @@ export class RecipeRegistrationComponent implements OnInit {
     this.form = this._formBuilder.group({
       name: [this.form.value.name, [Validators.required]],
       description: [this.form.value.description, [Validators.required]],
-      imgPath: [this.form.value.imgPath],
       newIngredientName: [''],
       newIngredientAmount: [1]
     });
@@ -64,7 +63,6 @@ export class RecipeRegistrationComponent implements OnInit {
     this.form = this._formBuilder.group({
       name: ['', [Validators.required]],
       description: ['', [Validators.required]],
-      imgPath: [''],
       newIngredientName: [''],
       newIngredientAmount: [1]
     });
@@ -75,7 +73,7 @@ export class RecipeRegistrationComponent implements OnInit {
 
   onSubmit() {
     const fields = this.form.value;
-    const recipe = new Recipe(fields.name, fields.description, fields.imgPath, this.ingredients, this.loggedUser);
+    const recipe = new Recipe(fields.name, fields.description, this.ingredients, this.loggedUser);
     this.recipeService.createRecipe(recipe);
   }
 

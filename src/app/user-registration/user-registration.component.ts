@@ -50,15 +50,15 @@ export class UserRegistrationComponent implements OnInit {
       this.form.value.email,
       this.form.value.password
     );
-
+    console.log(user);
     this._userService.createUser(user)
       .subscribe(
         data => {
-          this.resetForm();
           this.routerService.goToLogin();
         }, err => {
           console.error(err);
         }
-      );
+      )
+    this.resetForm();
   }
 }
