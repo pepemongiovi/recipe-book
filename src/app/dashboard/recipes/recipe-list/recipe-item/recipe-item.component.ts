@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Recipe} from '../../../../core/models/recipe.model';
 import {RecipeService} from '../../../../core/services/recipe.service';
 import {RouterService} from '../../../../core/services/router.service';
+import {timeout} from 'q';
 
 @Component({
   selector: 'app-recipe-item',
@@ -26,8 +27,8 @@ export class RecipeItemComponent implements OnInit {
   onDelete() {
     this.recipeService.deleteRecipe(this.recipe.id)
       .subscribe((res) => {
-        console.log(res);
+        this.recipeDeleted.emit();
         this.routerService.goToRecipes();
-      }, (err) => {console.log(err);});
+      });
   }
 }

@@ -13,14 +13,14 @@ import {Recipe} from '../../../core/models/recipe.model';
 export class RecipeListComponent implements OnInit {
   recipes;
 
-  constructor(private recipeService: RecipeService) { }
+  constructor(private recipeService: RecipeService) {}
 
   ngOnInit() {
     this.loadRecipes();
   }
 
   loadRecipes() {
-    return this.recipeService.getRecipes()
+    this.recipeService.getRecipes()
       .subscribe(data => {
         this.recipes = data;
         this.getRecipesById();
